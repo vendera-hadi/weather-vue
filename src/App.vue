@@ -1,5 +1,3 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 <template>
   <div id="app">
     <Header></Header>

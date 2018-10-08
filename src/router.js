@@ -1,16 +1,16 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 
 import Home from './components/Home.vue'
+import Detail from './components/Detail.vue'
 // import Search from './components/Search.vue'
-// import Detail from './components/Detail.vue'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
+export default new VueRouter({
   routes: [
     { path: '/', name: 'Home', component: Home },
+    { path: '/weather/:id', name: 'Detail', component: Detail },
     // { path: 'search', name: 'Search', component: Search },
-    // { path: 'weather', name: 'Detail', component: Detail },
   ]
 })

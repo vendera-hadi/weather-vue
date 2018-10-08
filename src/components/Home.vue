@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="row text-center">
-        <weather v-for="city in cities" v-bind:name="city.name"/>
+        <weather v-for="city in cities" v-bind:name="city.name" v-bind:index="0"/>
         </div>
       </div>
     </div>

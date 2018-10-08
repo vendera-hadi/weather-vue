@@ -2,7 +2,12 @@
   <div class="col-lg-3 col-md-6 mb-4">
     <div class="card">
       <p v-if="!city">Loading ...</p>
-      <weather-desc v-if="city" v-bind:city="city"/>
+      <weather-desc v-if="city" v-bind:city="city" v-bind:index="index"/>
+      <div class="card-footer" v-if="!isdetail">
+        <router-link v-bind:to="'/weather/'+ city.woeid">
+          <button class="btn btn-primary">View Detail</button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -11,7 +16,7 @@
 import Weatherdesc from './Weatherdesc'
 
 export default {
-  props: ['name'],
+  props: ['name','index','isdetail'],
   components: {
     'weather-desc': Weatherdesc
   },

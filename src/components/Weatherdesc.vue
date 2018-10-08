@@ -2,20 +2,18 @@
   <div>
     <h4 class="card-title mt-15">{{ city.title }}</h4>
     <div class="card-body">
-      <img v-bind:src="iconTemperature" />
-      <p class="card-text">{{currentTemperature}} &deg;C</p>
+      <img v-bind:src="iconTemperature" /><br><br>
+      <p class="card-text">{{ this.todayWeather.applicable_date | moment("ddd, MMMM Do YYYY") }}</p>
+      <h3>{{currentTemperature}} &deg;C</h3>
       <small>Min Temp: {{minTemperature}} &deg;C</small><br>
       <small>Max Temp: {{maxTemperature}} &deg;C</small>
-    </div>
-    <div class="card-footer">
-      <a href="#" class="btn btn-primary">View Detail</a>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['city'],
+  props: ['city','index'],
   data: function () {
     return {
       iconPath: 'https://www.metaweather.com/static/img/weather/png/64/'
@@ -24,7 +22,7 @@ export default {
   computed: {
     // get today's weather
     todayWeather: function () {
-      return this.city.consolidated_weather[0]
+      return this.city.consolidated_weather[this.index]
     },
     currentTemperature: function() {
       return this.todayWeather.the_temp.toFixed(2)
