@@ -6,7 +6,7 @@
       </div>
       <weather-desc v-if="city" v-bind:city="city" v-bind:index="index"/>
       <div class="card-footer" v-if="!isdetail && city">
-        <router-link v-if="city" v-bind:to="'/weather/'+ city.woeid">
+        <router-link v-bind:to="'/weather/'+ id">
           <button class="btn btn-primary">View Detail</button>
         </router-link>
       </div>
@@ -29,25 +29,17 @@
 import Weatherdesc from './Weatherdesc'
 
 export default {
-  props: ['name','index','isdetail'],
+  props: ['id','index','isdetail'],
   components: {
     'weather-desc': Weatherdesc
   },
   methods: {
-      findCity() {
-        // i use the shared weather.php file in my local server
-        let url = 'http://weatherapi.localhost/weather.php?command=search&keyword='+this.name
-        this.axios.get(url).then((response) => {
-          this.data = response.data[0]
-          this.fetchCity(this.data.woeid)
-        })
-      },
-      fetchCity(city_id) {
-        let url = 'http://weatherapi.localhost/weather.php?command=location&woeid='+city_id
-        this.axios.get(url).then((response) => {
-          this.city = response.data
-        })
-      }
+    fetchCity() {
+      let url = 'http://weatherapi.localhost/weather.php?command=location&woeid='+this.id
+      this.axios.get(url).then((response) => {
+        this.city = response.data
+      })
+    }
   },
   data: function () {
     return {
@@ -56,7 +48,7 @@ export default {
     }
   },
   created: function () {
-    this.findCity()
+    this.fetchCity()
   }
 }
 </script>

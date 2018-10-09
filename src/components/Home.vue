@@ -2,9 +2,9 @@
   <div class="page-container container mt-15">
     <div class="row">
       <div class="col-sm-12">
-        <searchbox />
+        <searchbox v-bind:keyword="keyword"/>
         <div class="row text-center">
-        <weather v-for="city in cities" v-bind:name="city.name" v-bind:index="0"/>
+        <weather v-for="city in cities" v-bind:id="city.woeid" v-bind:index="0"/>
         </div>
       </div>
     </div>
@@ -21,13 +21,14 @@ export default {
   },
   data: function () {
     return {
+      keyword: "",
       cities: [
-        { name: 'Istanbul' },
-        { name: 'Berlin' },
-        { name: 'London' },
-        { name: 'Helsinki' },
-        { name: 'Dublin' },
-        { name: 'Vancouver' }
+        { woeid: 2344116, name: 'Istanbul' },
+        { woeid: 638242, name: 'Berlin' },
+        { woeid: 44418, name: 'London' },
+        { woeid: 565346, name: 'Helsinki' },
+        { woeid: 560743, name: 'Dublin' },
+        { woeid: 9807, name: 'Vancouver' }
       ]
     }
   }

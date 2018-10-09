@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="row text-center mt-15">
-          <weather v-if="city" v-for="(item, index) in city.consolidated_weather" v-bind:name="city.title" v-bind:index="index" v-bind:isdetail="1"/>
+          <weather v-for="(item, index) in city.consolidated_weather" v-bind:id="id" v-bind:index="index" v-bind:isdetail="1"/>
         </div>
       </div>
     </div>
