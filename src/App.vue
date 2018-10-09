@@ -19,7 +19,18 @@ export default {
 </script>
 
 <style lang="scss">
-.mt-15{
-  margin-top: 15px;
+$margin-indexes: 15 30;
+@each $current-index in $margin-indexes {
+  $i: index($margin-indexes, $current-index);
+  .mt-#{$current-index} {
+      margin-top: #{$current-index}px;
+  }
+  .mb-#{$current-index} {
+      margin-bottom: #{$current-index}px;
+  }
+}
+
+.page-container{
+  min-height: 480px;
 }
 </style>

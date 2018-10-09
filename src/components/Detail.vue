@@ -1,9 +1,11 @@
 <template>
-  <div class="container mt-15">
+  <div class="page-container container mt-15">
     <div class="row">
       <div class="col-sm-12">
         <div class="row text-center">
-          <h1>{{city.title}}</h1>
+          <div class="col-sm-12">
+            <h1>{{city.title}}</h1>
+          </div>
         </div>
         <div class="row text-center mt-15">
           <weather v-if="city" v-for="(item, index) in city.consolidated_weather" v-bind:name="city.title" v-bind:index="index" v-bind:isdetail="1"/>
