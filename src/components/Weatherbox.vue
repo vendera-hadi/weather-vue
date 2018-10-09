@@ -4,7 +4,7 @@
       <p v-if="!city">Loading ...</p>
       <weather-desc v-if="city" v-bind:city="city" v-bind:index="index"/>
       <div class="card-footer" v-if="!isdetail">
-        <router-link v-bind:to="'/weather/'+ city.woeid">
+        <router-link v-if="city" v-bind:to="'/weather/'+ city.woeid">
           <button class="btn btn-primary">View Detail</button>
         </router-link>
       </div>
